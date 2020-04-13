@@ -62,15 +62,29 @@ const team = {
         opponentPoints: opponentPts
       };
       this._games.push(game);
+    },
+    // method for calculating the average score of all the team's games
+    averageScore () {
+        let totalPoints = 0;
+        this._games.forEach((element) =>{
+            totalPoints += element.teamPoints; 
+        });
+        const result = (totalPoints / this._games.length).toFixed(2);
+        return `The average score of the team's games is ${result} points per game.`
     }
+
   };
   
   // testing that everything works as expected
   team.addPlayer('Steph', 'Curry', 28);
   team.addPlayer('Lisa', 'Leslie', 44);
-  team.addPlayer('Bugs', 'Leslie', 44);
+  team.addPlayer('Bugs', 'Bunny', 76);
   team.addGame('Craiova', 3, 0);
   team.addGame('Arges', 1, 1);
   team.addGame('Sportul', 0, 3);
   console.log(team.players);
   console.log(team.games);
+  console.log(team.averageScore());
+  team.addGame('Voluntari', 3, 0);
+  console.log(team.games);
+  console.log(team.averageScore());
